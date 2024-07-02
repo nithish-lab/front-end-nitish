@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown Menu on Click</title>
+<style>
+  /* Styles for the dropdown menu */
+  .footer{
+    text-align: center;
+    bottom: 0%;
+    padding-top: 30px;
+    }
+  body {
+  font-family: "Open Sans", sans-serif;
+    /* Multiple background images */
+    background: linear-gradient(
+                to bottom,
+                #b0b0b0, /* Mercury */
+                #e5e4e2, /* Venus */
+                #518eef, /* Earth */
+                #f66868, /* Mars */
+                #d1a384, /* Jupiter */
+                #f7dd67, /* Saturn */
+                #9bc4e2, /* Uranus */
+                #6285ec  /* Neptune */
+            );
+    /* Background position */
+    background-position: center;
+
+    /* Background size */
+    background-size: contain;
+
+    /* Background repeat */
+    background-repeat: no-repeat;
+
+    /* Background attachment to make it scrollable */
+    background-attachment:scroll;
+    
+    /* Other styling to ensure the page is scrollable */
+    height: auto;
+   /* Example height to enable scrolling */
+    margin: 0;
+    padding: 0;
+}
+  .nav{
+        background-color: rgba(0,0,0,0);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    align-items: center;
+  }
+    img{
+      border-radius: 50%;
+    }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  span{
+    margin-left: 100px;
+  }
+  /* features fieldset block */
+    fieldset {
+            display: grid;
+            width: 90%;
+            margin: 20px;
+            margin-top: 40px;
+            border: 1px solid red;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            margin-left: 75px;
+            margin-right: auto;
+        }
+        legend {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .feature img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .feature-details {
+            max-width: 600px;
+        }
+        .main-point {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .sub-point {
+            font-size: 1em;
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+        hr {
+            border: 1px solid red;
+            margin: 20px 0;
+        }
+</style>
+</head>
+<body>
+<div class="nav">
+<div class="dropdown">
+  <img src="./static/img/logo.jpg" width="50" height="50"  onclick="toggleDropdown()">
+  <div class="dropdown-content" id="dropdownMenu">
+    <a href="./home.html">Home</a>
+    <a href="./about.html">About Us</a>
+    <a href="#features">Features</a>
+    <a href="./index.html">Logout</a>
+  </div>
+</div>
+<marquee style="color: black; font-size: 20px; font-weight: bold; border-radius: 15px; padding: 10px;">
+    Aaruhi_Ai_Bot
+</marquee>
+
+<script>
+  function toggleDropdown() {
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    if (dropdownMenu.style.display === "block") {
+      dropdownMenu.style.display = "none";
+    } else {
+      dropdownMenu.style.display = "block";
+    }
+  }
+</script>
+</div>
+<fieldset>
+  <legend>Features</legend>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/edu_srch_astronomy_picture_of_the_day.webp" style="border-radius: 0;" alt="APOD Image">
+      <div class="feature-details">
+          <div class="main-point">Astronomy Picture of the Day (APOD)</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Provides a daily image or video with an explanation.</li>
+              <li><strong>API Endpoint</strong>: <code>/planetary/apod</code></li>
+              <li><strong>Data Provided</strong>: Title, explanation, date, URL of the image or video.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/mars rover photo.jpeg" style="border-radius: 0;" alt="Mars Rover Photos Image">
+      <div class="feature-details">
+          <div class="main-point">Mars Rover Photos</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Access photos taken by Mars rovers (Curiosity, Opportunity, Spirit).</li>
+              <li><strong>API Endpoint</strong>: <code>/mars-photos/api/v1/rovers/{rover_name}/photos</code></li>
+              <li><strong>Data Provided</strong>: Rover name, camera details, image URLs, earth date, and Martian sol.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/Earth Observatory Natural Event Tracker (EONET).jpeg" style="border-radius: 0;" alt="EONET Image">
+      <div class="feature-details">
+          <div class="main-point">Earth Observatory Natural Event Tracker (EONET)</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Provides information on natural events observed by NASA.</li>
+              <li><strong>API Endpoint</strong>: <code>/eonet/v2.1/events</code></li>
+              <li><strong>Data Provided</strong>: Event title, description, categories, geometries, sources, and links.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/Near Earth Object Web Service (NeoWs).jpeg" style="border-radius: 0;" alt="NeoWs Image">
+      <div class="feature-details">
+          <div class="main-point">Near Earth Object Web Service (NeoWs)</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Information about asteroids and comets that are close to Earth.</li>
+              <li><strong>API Endpoint</strong>: <code>/neo/rest/v1/neo/browse</code></li>
+              <li><strong>Data Provided</strong>: Object name, estimated diameter, close approach data, orbit details.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/Exoplanet Archive.jpeg" style="border-radius: 0;" alt="Exoplanet Archive Image">
+      <div class="feature-details">
+          <div class="main-point">Exoplanet Archive</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Data on exoplanets and their host stars.</li>
+              <li><strong>API Endpoint</strong>: <code>/exoplanet/</code></li>
+              <li><strong>Data Provided</strong>: Planet name, host star details, discovery method, and orbital parameters.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/NASA Image and Video Library.jpeg" style="border-radius: 0;" alt="NASA Image and Video Library Image">
+      <div class="feature-details">
+          <div class="main-point">NASA Image and Video Library</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Search and retrieve images, audio, and videos from NASA’s media library.</li>
+              <li><strong>API Endpoint</strong>: <code>/search</code></li>
+              <li><strong>Data Provided</strong>: Media type, title, description, date created, keywords, media URLs.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/International Space Station (ISS) Current Location.jpeg" style="border-radius: 0;" alt="ISS Location Image">
+      <div class="feature-details">
+          <div class="main-point">International Space Station (ISS) Current Location</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Get the real-time location of the ISS.</li>
+              <li><strong>API Endpoint</strong>: <code>/iss-now.json</code></li>
+              <li><strong>Data Provided</strong>: Timestamp, latitude, longitude, message.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/Solar System Dynamics (SSD).jpeg" style="border-radius: 0;" alt="Solar System Dynamics Image">
+      <div class="feature-details">
+          <div class="main-point">Solar System Dynamics (SSD)</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Data on planetary positions, orbits, and physical characteristics.</li>
+              <li><strong>API Endpoint</strong>: <code>/ssd/api/v1</code></li>
+              <li><strong>Data Provided</strong>: Object name, orbital elements, physical parameters.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/Mars Weather Service API.jpeg" style="border-radius: 0;" alt="Mars Weather Service Image">
+      <div class="feature-details">
+          <div class="main-point">Insight: Mars Weather Service API</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Provides the latest weather data from the Mars Insight lander.</li>
+              <li><strong>API Endpoint</strong>: <code>/insight_weather/</code></li>
+              <li><strong>Data Provided</strong>: Sol (Martian day), temperature, wind speed, atmospheric pressure.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/EPIC (Earth Polychromatic Imaging Camera).jpeg" style="border-radius: 0;" alt="EPIC Image">
+      <div class="feature-details">
+          <div class="main-point">EPIC (Earth Polychromatic Imaging Camera)</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Provides images of the Earth captured by the EPIC camera on the DSCOVR spacecraft.</li>
+              <li><strong>API Endpoint</strong>: <code>/EPIC/api/natural/images</code></li>
+              <li><strong>Data Provided</strong>: Image date, caption, image URL.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+  
+  <div class="feature">
+      <img src="./static/img/nasa/Image Metadata.jpeg" style="border-radius: 0;" alt="Image Metadata">
+      <div class="feature-details">
+          <div class="main-point">Image Metadata</div>
+          <ul class="sub-point">
+              <li><strong>Feature</strong>: Retrieve metadata for a specific image from the NASA Image and Video Library.</li>
+              <li><strong>API Endpoint</strong>: <code>/metadata/{image_id}</code></li>
+              <li><strong>Data Provided</strong>: Title, description, center, photographer, keywords, location, date created.</li>
+          </ul>
+      </div>
+  </div>
+  <hr>
+</fieldset>
+<div class="footer">
+  <div class="social-icons">
+      <a href="https://www.linkedin.com/in/aaruhi-ai-bot-361889315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="./static/img/linkedin_3536569.png" height="20" width="20"></a>
+      <a href="https://www.facebook.com/profile.php?id=61561541960481&mibextid=ZbWKwL"><img src="./static/img/facebook_733603.png" height="20" width="20"></a>
+      <a href="https://www.instagram.com/aaruhi_ai_bot"><img src="./static/img/instagram_3938052.png" height="20" width="20"></a>
+      <a href="mailto:aaruhiaibot411205@gmail.com"><img src="./static/img/envelope_9046102.png" height="20" width="20"></a>
+      <a href="https://x.com/Aaruhi_Ai_Bot?s=09"><img src="./static/img/twitter_5968830.png" height="20" width="20"></a>
+  </div>
+  <div class="contact-info">
+      <p>Phone: +1234567890</p>
+      <p>Email: aaruhiaibot411205@gmail.com</p>
+  </div>
+</div>
+</body>
+</html>
